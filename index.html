@@ -11,6 +11,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loader-wrapper">
+        <div class="loader-content">
+            <svg class="pencil" viewBox="0 0 200 200" width="200px" height="200px" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <clipPath id="pencil-clip">
+                        <path d="M0 200 L200 200 L200 0 L0 0 Z"></path>
+                    </clipPath>
+                </defs>
+                <path class="pencil-body" d="M128.5,3.5 L159.2,34.2 L42.1,151.3 L11.4,120.6 L128.5,3.5 Z"></path>
+                <path class="pencil-eraser" d="M159.2,34.2 L181.7,56.7 L140.6,97.8 L118.1,75.3 L159.2,34.2 Z"></path>
+                <path class="pencil-eraser-band" d="M140.6,97.8 L118.1,75.3 L128.5,64.9 L151,87.4 L140.6,97.8 Z"></path>
+                <path class="pencil-tip" d="M42.1,151.3 L21,172.4 L0.9,151.3 L11.4,120.6 L42.1,151.3 Z"></path>
+            </svg>
+            <svg class="line" viewBox="0 0 500 50" width="500px" height="50px" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 25 L490 25"></path>
+            </svg>
+            <div class="loader-text">Loading Excellence...</div>
+        </div>
+    </div>
+
+
     <!--Header-->
     <header>
         <div class="container">
@@ -290,6 +312,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // --- Loading Screen ---
+            window.addEventListener('load', () => {
+                const loader = document.getElementById('loader-wrapper');
+                // Add 'loaded' class to body to trigger fade-out animation
+                document.body.classList.add('loaded');
+            });
+            
             // --- Scroll Animation Logic ---
             const scrollElements = document.querySelectorAll('.scroll-animate');
 
@@ -345,7 +374,7 @@
             const navLinks = sidebar.querySelectorAll('a');
 
             const openSidebar = () => {
-                document.body.classList.add('sidebar-open');
+                document.body.classList.add('sidebar-en');
             };
 
             const closeSidebar = () => {
@@ -359,14 +388,6 @@
             // Close sidebar when a nav link is clicked
             navLinks.forEach(link => {
                 link.addEventListener('click', closeSidebar);
-            });
-
-
-            // --- Initial Page Load Fade-in ---
-            document.body.style.opacity = '0';
-            window.addEventListener('load', () => {
-                document.body.style.transition = 'opacity 0.5s ease-in-out';
-                document.body.style.opacity = '1';
             });
         });
     </script>
